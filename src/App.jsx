@@ -1,11 +1,11 @@
 import './App.scss'
+import './blocks/container/container'
+import Main from './pages/main'
 
 function App() {
 
   return (
-    <>
-    <h1 className="test">Работает?</h1>
-    </>
+    <Main />
   )
 }
 
