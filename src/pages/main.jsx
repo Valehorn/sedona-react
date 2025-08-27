@@ -1,5 +1,5 @@
 import Container from "../blocks/container/container";
-import Header from "../blocks/header";
+import Header from "../blocks/header/header";
 
 function Main() {
     return (
