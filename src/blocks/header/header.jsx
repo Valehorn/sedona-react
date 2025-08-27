@@ -1,8 +1,12 @@
-function Header({children}) {
+import Logo from '../logo/logo';
+
+function Header() {
     return (
-        <header className="header">{children}</header>
+        <header className="header">
+          <Logo />
+        </header>
     )
-    
+
 }
 
 export default Header;

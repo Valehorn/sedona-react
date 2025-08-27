@@ -4,9 +4,7 @@ import Header from "../blocks/header/header";
 function Main() {
     return (
         <Container>
-            <Header>
-                <h1 className="test">Работает?</h1>
-            </Header>
+            <Header />
         </Container>
     )
 }
