@@ -12,7 +12,7 @@ function NavigationList() {
             className="header__navigation-item"
             aria-current={index === 0 ? "page" : undefined}
           >
-            <a href={item} className="header__navigation-link">{item}</a>
+            <a href={item} className={`header__navigation-link ${index === 0 ? "header__navigation-link--current" : undefined}`}>{item}</a>
           </li>
         ))}
       </ul>

@@ -1,3 +1,5 @@
+@use './variables.scss' as vars;
+
 .button {
   position: relative;
   display: inline-flex;
@@ -16,9 +18,13 @@
   user-select: none;
   padding: 8px 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in, color 0.3s ease-in, border 0.3s ease-in;
+  transition: background-color 0.3s ease-in;
 };
 
 .button--primary {
-  background-color: #756157;
+  background-color: vars.$button-primary;
+
+  &:hover {
+    background-color: #615048;
+  }
 }

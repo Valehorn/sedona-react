@@ -81,6 +81,11 @@
     mask-size: 19px 19px;
     mask-repeat: no-repeat;
     background-color: #000000;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover::before {
+    background-color: #83b3d3;;
   }
 };
 
