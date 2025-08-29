@@ -3,3 +3,20 @@
   padding: 0;
   margin: 0;
 }
+
+.header__navigation-link {
+  position: relative;
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  line-height: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 20px 16px;
+  transition: color 0.3s ease ;
+}
+
+.header__navigation-list {
+  display: flex;
+  flex-wrap: wrap;
+}

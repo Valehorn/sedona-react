@@ -1,8 +1,56 @@
+@use '../../global/variables.scss' as vars;
+
 .header__sub-menu-list {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
-}
+};
+
+.header__sub-menu-item {
+  position: relative;
+
+  &:nth-last-child(2) {
+    margin-inline-end: 25px;
+  }
+
+  &:has(.header__sub-menu-button--like):has(.header__sub-menu-button--liked) {
+    .header__sub-menu-like-counter::before {
+      background-color: vars.$primary-bg-color;
+    }
+  }
+};
+
+.header__sub-menu-counter-container {
+  position: absolute;
+  top: -6px;
+  right: 9px;
+};
+
+.header__sub-menu-like-counter {
+  position: relative;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 10px;
+  color: #ffffff;
+  z-index: 1;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #7db54f;
+    transition: background-color 0.3s ease;
+    z-index: -1;
+  }
+};
 
 .header__sub-menu-button {
   --mask-image: 0;
@@ -18,6 +66,7 @@
   padding-right: 22px;
   padding-top: 12px;
   padding-bottom: 12px;
+  cursor: pointer;
 
   &::before {
     position: absolute;
@@ -33,17 +82,17 @@
     mask-repeat: no-repeat;
     background-color: #000000;
   }
-}
+};
 
 .header__sub-menu-button--search {
   --mask-image: url(../../assets/image/icons/search.svg);
-}
+};
 
 .header__sub-menu-button--like {
   --mask-image: url(../../assets/image/icons/favorite.svg);
-}
+};
 
 .header__sub-menu-link {
   min-width: 160px;
   min-height: 36px
-}
+};
