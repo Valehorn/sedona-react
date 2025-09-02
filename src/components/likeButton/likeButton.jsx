@@ -16,7 +16,7 @@ function LikeButton({
     setIsLiked(newIsLiked);
 
     if (onLikeChange) {
-      onLikeChange(newCount, newIsLiked);
+      onLikeChange(newCount, newIsLiked); // для отладки
     }
   };
 
@@ -26,7 +26,7 @@ function LikeButton({
         <span className={`${className}-like-counter`}>{likeCount}</span>
       </span>
       <button
-        className={`${className}-button ${className}-button--like ${isLiked ? `${className}--liked` : ''}`}
+        className={`${className}-button ${className}-button--like ${isLiked ? `${className}-button--liked` : ''}`}
         onClick={handleClick}
         type="button"
         aria-pressed={isLiked}
