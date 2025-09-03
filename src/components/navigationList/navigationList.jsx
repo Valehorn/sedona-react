@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import './navigationList.scss';
 
-function NavigationList() {
+function NavigationList({className = ''}) {
   const location = useLocation();
   const navigationData = [
     { title: 'Главная', path: '/' },
@@ -10,19 +9,19 @@ function NavigationList() {
   ];
 
   return (
-    <nav className="header__navigation">
-      <ul className="header__navigation-list">
+    <nav className={`${className}__navigation`}>
+      <ul className={`${className}__navigation-list`}>
         {navigationData.map((item, index) => {
           const isActive = location.pathname === item.path;
           return (
             <li
               key={index}
-              className="header__navigation-item"
+              className={`${className}__navigation-item`}
               aria-current={isActive ? "page" : undefined}
             >
               <Link
                 to={item.path}
-                className={`header__navigation-link ${isActive ? "header__navigation-link--current" : ""}`}
+                className={`${className}__navigation-link ${isActive ? `${className}__navigation-link--current` : ""}`}
               >
                 {item.title}
               </Link>

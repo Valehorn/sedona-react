@@ -1,4 +1,3 @@
-import './subMenu.scss'
 import '../../assets/image/icons/search.svg';
 import '../../assets/image/icons/favorite.svg';
 import LikeButton from '../likeButton/likeButton';

@@ -16,17 +16,23 @@ function LikeButton({
     setIsLiked(newIsLiked);
 
     if (onLikeChange) {
-      onLikeChange(newCount, newIsLiked); // для отладки
+      onLikeChange(newCount, newIsLiked);
     }
   };
 
+  const containerClass = className ? `${className} ${className}-counter-container` : 'counter-container';
+  const counterClass = className ? `${className}-like-counter` : 'like-counter';
+  const buttonClass = className
+    ? `${className}-button ${className}-button--like ${isLiked ? `${className}-button--liked` : ''}`
+    : `button button--like ${isLiked ? 'button--liked' : ''}`;
+
   return (
     <>
-      <span className={`${className}-counter-container`}>
-        <span className={`${className}-like-counter`}>{likeCount}</span>
+      <span className={containerClass}>
+        <span className={counterClass}>{likeCount}</span>
       </span>
       <button
-        className={`${className}-button ${className}-button--like ${isLiked ? `${className}-button--liked` : ''}`}
+        className={buttonClass}
         onClick={handleClick}
         type="button"
         aria-pressed={isLiked}
