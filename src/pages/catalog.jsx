@@ -3,9 +3,7 @@ import Header from "../blocks/header/header";
 
 function Catalog() {
   return (
-    <Container>
-      <Header />
-    </Container>
+    <Header />
   )
 }
 
