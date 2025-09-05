@@ -1,3 +1,4 @@
+import Advantages from "../blocks/advantages/advantages";
 import Header from "../blocks/header/header";
 import Hero from "../blocks/hero/hero";
 import Reasons from "../blocks/reasons/reasons";
@@ -9,6 +10,7 @@ function Main() {
       <main className="main">
         <Hero />
         <Reasons />
+        <Advantages />
       </main>
     </div>
   )
