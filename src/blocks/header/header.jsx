@@ -1,7 +1,7 @@
 import './header.scss';
 import Logo from '../../components/logo/logo';
 import NavigationList from '../../components/navigationList/navigationList';
-import SubMenu from '../../components/subNavigation/subMenu';
+import SubMenu from '../../components/subMenu/subMenu';
 import Container from '../container/container';
 
 function Header() {

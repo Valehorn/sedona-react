@@ -1,6 +1,7 @@
 import '../../assets/image/icons/search.svg';
 import '../../assets/image/icons/favorite.svg';
 import LikeButton from '../likeButton/likeButton';
+import Button from '../button/button';
 
 function SubMenu() {
   return (
@@ -17,9 +18,7 @@ function SubMenu() {
         />
       </li>
       <li className="header__sub-menu-item">
-        <button className="button header__sub-menu-link button--primary" type="button">
-          <span>Хочу сюда!</span>
-        </button>
+        <Button className="header" classMod="primary" classExtra="sub-menu-link" text="Хочу сюда!"/>
       </li>
     </ul>
   );
