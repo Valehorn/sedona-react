@@ -1,0 +1,17 @@
+.date-input {
+  position: relative;
+}
+
+.date-input__input {
+&::-webkit-calendar-picker-indicator {
+      display: none !important;
+    }
+
+    &::-moz-calendar-picker-indicator {
+      display: none !important;
+    }
+
+    &::-ms-clear {
+      display: none !important;
+    }
+}

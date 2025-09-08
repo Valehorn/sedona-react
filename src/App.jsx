@@ -2,7 +2,6 @@ import './global/fonts.scss';
 import './App.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './global/visually-hidden.scss';
-import './global/button.scss';
 import './blocks/container/container';
 import Main from './pages/main';
 import Catalog from './pages/catalog';

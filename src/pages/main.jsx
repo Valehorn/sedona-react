@@ -1,6 +1,7 @@
 import Advantages from "../blocks/advantages/advantages";
 import Header from "../blocks/header/header";
 import Hero from "../blocks/hero/hero";
+import Modal from "../blocks/modal/modal";
 import Reasons from "../blocks/reasons/reasons";
 import Total from "../blocks/total/total";
 
@@ -14,6 +15,7 @@ function Main() {
         <Advantages />
         <Total />
       </main>
+      <Modal />
     </div>
   )
 }
