@@ -56,10 +56,10 @@ function DateInput({
       )}
       <input
         ref={inputRef}
+        className={`date-input__input ${classMod ? `date-input__input--${classMod}` : ""}`}
         type="date"
         value={selectedDate}
         onChange={handleInputChange}
-        className={`date-input__input ${classMod ? `date-input__input--${classMod}` : ""}`}
         id={inputId}
         name={name}
       />
