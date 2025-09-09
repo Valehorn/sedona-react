@@ -1,21 +1,11 @@
-import { useRef, useEffect } from 'react';
+import { useModal } from '../../contexts/modalContext/useModal.jsx';
 import '../../assets/image/icons/search.svg';
 import '../../assets/image/icons/favorite.svg';
 import LikeButton from '../likeButton/likeButton';
 import Button from '../button/button';
 
 function SubMenu() {
-  const modalRef = useRef(null);
-
-  useEffect(() => {
-    modalRef.current = document.querySelector('.modal');
-  }, []);
-
-  const openSearchModal = () => {
-    if (modalRef.current) {
-      modalRef.current.showModal();
-    }
-  };
+  const { openModal } = useModal();
 
   return (
     <ul className="header__sub-menu-list">
@@ -23,7 +13,7 @@ function SubMenu() {
         <button
           className="header__sub-menu-button header__sub-menu-button--search"
           type="button"
-          onClick={openSearchModal}
+          onClick={openModal}
         >
           <span className="visually-hidden">Поиск</span>
         </button>

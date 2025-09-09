@@ -5,16 +5,19 @@ import './global/visually-hidden.scss';
 import './blocks/container/container';
 import Main from './pages/main';
 import Catalog from './pages/catalog';
+import { ModalProvider } from './contexts/modalContext/modalContex';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/about" element={<div>Страница "О Седоне"</div>} />
-      </Routes>
-    </Router>
+    <ModalProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/about" element={<div>Страница "О Седоне"</div>} />
+        </Routes>
+      </Router>
+    </ModalProvider>
   );
 }
 
