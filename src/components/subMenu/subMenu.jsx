@@ -1,13 +1,30 @@
+import { useRef, useEffect } from 'react';
 import '../../assets/image/icons/search.svg';
 import '../../assets/image/icons/favorite.svg';
 import LikeButton from '../likeButton/likeButton';
 import Button from '../button/button';
 
 function SubMenu() {
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    modalRef.current = document.querySelector('.modal');
+  }, []);
+
+  const openSearchModal = () => {
+    if (modalRef.current) {
+      modalRef.current.showModal();
+    }
+  };
+
   return (
     <ul className="header__sub-menu-list">
       <li className="header__sub-menu-item">
-        <button className="header__sub-menu-button header__sub-menu-button--search" type="button">
+        <button
+          className="header__sub-menu-button header__sub-menu-button--search"
+          type="button"
+          onClick={openSearchModal}
+        >
           <span className="visually-hidden">Поиск</span>
         </button>
       </li>
@@ -18,7 +35,12 @@ function SubMenu() {
         />
       </li>
       <li className="header__sub-menu-item">
-        <Button className="header" classMod="primary" classExtra="sub-menu-link" text="Хочу сюда!"/>
+        <Button
+          className="header"
+          classMod="primary"
+          classExtra="sub-menu-link"
+          text="Хочу сюда!"
+        />
       </li>
     </ul>
   );
