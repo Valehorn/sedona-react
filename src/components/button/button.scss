@@ -28,3 +28,11 @@
     background-color: #615048;
   }
 }
+
+.button--secondary {
+  background-color: vars.$primary-bg-color;
+
+  &:hover {
+    background-color: #68a2ca;
+  }
+}

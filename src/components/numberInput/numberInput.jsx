@@ -1,6 +1,8 @@
+import './number-input.scss';
 import { useState } from 'react';
 
 function NumberInput({
+  className="",
   classMod = "",
   label = "Выберите количество человек",
   placeholder = "1",
@@ -35,7 +37,7 @@ function NumberInput({
   };
 
   return (
-    <div className="number-input">
+    <div className={`${className? `${className}__number-input` : ""} number-input`}>
       <label htmlFor={name} className="number-input__label">
         {label}
       </label>
