@@ -5,7 +5,7 @@ import './global/visually-hidden.scss';
 import './blocks/container/container';
 import Main from './pages/main';
 import Catalog from './pages/catalog';
-import { ModalProvider } from './contexts/modalContext/modalContex';
+import { ModalProvider } from './contexts/modalContext/modalContext.jsx';
 
 function App() {
   return (
