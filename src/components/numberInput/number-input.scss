@@ -1,4 +1,66 @@
 .number-input {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.number-input__button {
+  --button-image: 0;
+
+  position: relative;
+  min-width: 40px;
+  min-height: 48px;
+  padding: 0;
+  background-color: #f2f2f2;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+    width: 20px;
+    height: 20px;
+    mask-image: var(--button-image);
+    mask-position: center;
+    mask-size: 20px 20px;
+    background-color: #000000;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.number-input__button--decrement {
+  --button-image: url(../../assets/image/icons/minus.svg);
+
+    border-radius: 4px 0 0 4px;
+}
+
+.number-input__button--increment {
+  --button-image: url(../../assets/image/icons/plus.svg);
+
+  border-radius: 0 4px 4px 0;
+}
+
+.number-input__input-container {
+  display: flex;
+}
+
+.number-input__input {
+    font-family: "PT Sans", sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid transparent;
+    background-color: #f2f2f2;
+    width: 30px;
+    min-height: 48px;
 }

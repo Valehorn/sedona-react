@@ -2,15 +2,14 @@ import './number-input.scss';
 import { useState } from 'react';
 
 function NumberInput({
-  className="",
+  className = "",
   classMod = "",
   label = "Выберите количество человек",
-  placeholder = "1",
   name = "",
   minNumber = 1,
   maxNumber = null,
 }) {
-  const [value, setValue] = useState(minNumber);
+  const [value, setValue] = useState(2);
 
   const handleIncrement = () => {
     if (!maxNumber || value < maxNumber) {
@@ -37,38 +36,34 @@ function NumberInput({
   };
 
   return (
-    <div className={`${className? `${className}__number-input` : ""} number-input`}>
+    <div className={`${className ? `${className}__number-input` : ""} number-input`}>
       <label htmlFor={name} className="number-input__label">
         {label}
       </label>
       <div className="number-input__input-container">
         <button
-          className="number-input__button number-input__button--minus"
+          className="number-input__button number-input__button--decrement"
           type="button"
           onClick={handleDecrement}
           disabled={value <= minNumber}
-        >
-          -
-        </button>
+        ></button>
         <input
           className={`number-input__input ${classMod ? `number-input__input--${classMod}` : ""}`}
           type="number"
           name={name}
           id={name}
           min={minNumber}
-          max={maxNumber || undefined}
-          placeholder={placeholder}
+          max={maxNumber || null}
           value={value}
           onChange={handleInputChange}
+          placeholder="2"
         />
         <button
-          className="number-input__button number-input__button--plus"
+          className="number-input__button number-input__button--increment"
           type="button"
           onClick={handleIncrement}
           disabled={maxNumber !== null && value >= maxNumber}
-        >
-          +
-        </button>
+        ></button>
       </div>
     </div>
   );

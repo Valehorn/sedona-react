@@ -51,14 +51,14 @@ function Modal() {
           <NumberInput
             className="modal"
             classMod="adult"
-            label="Взрослые"
+            label="Взрослые:"
             name="adult"
             maxNumber="50"
           />
           <NumberInput
             className="modal"
             classMod="kids"
-            label="Дети"
+            label="Дети:"
             name="kids"
             maxNumber="50"
           />

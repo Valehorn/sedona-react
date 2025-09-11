@@ -65,6 +65,12 @@
   background-color: transparent;
   border: 1px solid transparent;
   opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .date-input__label {
