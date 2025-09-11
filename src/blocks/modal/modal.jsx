@@ -61,6 +61,7 @@ function Modal() {
             label="Дети:"
             name="kids"
             maxNumber="50"
+            tooltip
           />
         </div>
         <Button className="modal" classMod="secondary" type="submit" text="Найти" />

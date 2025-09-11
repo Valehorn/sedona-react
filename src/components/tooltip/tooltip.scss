@@ -1,0 +1,79 @@
+.tooltip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 55px;
+  z-index: 1;
+}
+
+.tooltip__inner {
+  position: relative;
+}
+
+.tooltip__button {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background-color: #68a2ca;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(../../assets/image/icons/tooltip.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+  }
+
+  &:hover {
+    background-color: #83b3d3;
+  }
+
+  &:hover ~ .tooltip__descritpion {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.tooltip__descritpion {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 66%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+
+    span {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #333333;
+    padding: 19px 18px 18px 22px;
+    border-radius: 10px;
+    width: 256px;
+    min-height: 143px;
+    }
+
+    span::before {
+      position: absolute;
+      content: "";
+      top: -9px;
+      left: 118px;
+      width: 19px;
+      height: 9px;
+      background-image: url(../../assets/image/dark-triangle-tooltip.svg);
+      background-repeat: no-repeat;
+    }
+}

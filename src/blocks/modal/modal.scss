@@ -5,6 +5,7 @@
   padding: 64px 70px;
   background-color: #ffffff;
   min-width: 717px;
+  max-width: 717px;
   border: 1px solid transparent;
   border-radius: 30px;
   transform: translateY(23px);
@@ -81,4 +82,10 @@
   font-size: 20px;
   width: 100%;
   min-height: 60px;
+}
+
+.modal__number-input {
+  &:has(input[id="kids"]) {
+    margin-inline-start: 87px;
+  }
 }
