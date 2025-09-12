@@ -3,6 +3,7 @@ import Header from "../blocks/header/header";
 import Hero from "../blocks/hero/hero";
 import Modal from "../blocks/modal/modal";
 import Reasons from "../blocks/reasons/reasons";
+import Subscription from "../blocks/subscription/subscription";
 import Total from "../blocks/total/total";
 
 function Main() {
@@ -15,6 +16,7 @@ function Main() {
           <Reasons />
           <Advantages />
           <Total />
+          <Subscription />
         </main>
       </div>
       <Modal />
