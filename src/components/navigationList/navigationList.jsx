@@ -22,6 +22,7 @@ function NavigationList({className = ''}) {
               <Link
                 to={item.path}
                 className={`${className}__navigation-link ${isActive ? `${className}__navigation-link--current` : ""}`}
+                draggable="false"
               >
                 {item.title}
               </Link>
