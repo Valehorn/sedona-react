@@ -9,6 +9,18 @@
   border: 1px solid transparent;
   border-radius: 30px;
   transform: translateY(23px);
+  transition: opacity 0.3s ease;
+  transition-behavior: allow-discrete;
+  opacity: 0;
+
+  &[open],
+  &[open]::backdrop {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
 
   h2 {
     font-size: 30px;
@@ -28,6 +40,7 @@
   }
 
   &::backdrop {
+    opacity: 0;
     background-color: rgba(242, 242, 242, 0.8);
   }
 }

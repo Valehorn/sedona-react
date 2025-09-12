@@ -52,9 +52,9 @@ function Modal() {
   };
 
   return (
-    <dialog className="modal" ref={dialogRef}>
+    <dialog className="modal" ref={dialogRef} onKeyDown={closeModal}>
       <div className="modal__button-close-container">
-        <button className="modal__button-close" onClick={closeModal} onKeyDown={closeModal}>
+        <button className="modal__button-close" onClick={closeModal}>
           <span className="visually-hidden">Кнопка закрытия модального окна.</span>
         </button>
       </div>

@@ -7,16 +7,18 @@ import Total from "../blocks/total/total";
 
 function Main() {
   return (
-    <div className="page-container">
-      <Header />
-      <main className="main">
-        <Hero />
-        <Reasons />
-        <Advantages />
-        <Total />
-      </main>
+    <>
+      <div className="page-container">
+        <Header />
+        <main className="main">
+          <Hero />
+          <Reasons />
+          <Advantages />
+          <Total />
+        </main>
+      </div>
       <Modal />
-    </div>
+    </>
   )
 }
 
