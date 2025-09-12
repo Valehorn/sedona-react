@@ -23,12 +23,12 @@ function Modal() {
   return (
     <dialog className="modal" ref={dialogRef}>
       <div className="modal__button-close-container">
-        <button className="modal__button-close" onClick={closeModal}>
+        <button className="modal__button-close" onClick={closeModal} onKeyDown={closeModal}>
           <span className="visually-hidden">Кнопка закрытия модального окна.</span>
         </button>
       </div>
       <h2>Поиск гостиницы в седоне</h2>
-      <form action="/" className="modal__form" method="post">
+      <form action="#" className="modal__form" method="post">
         <div className="modal__inputs">
           <DateInput
             className="modal"
