@@ -18,7 +18,15 @@
   user-select: none;
   padding: 8px 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:focus-visible {
+    outline: 3px solid vars.$primary-bg-color;
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 0.3);
+  }
 };
 
 .button--primary {

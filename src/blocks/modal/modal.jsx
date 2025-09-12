@@ -12,6 +12,65 @@ function Modal() {
   const [dateOut, setDateOut] = useState('');
   const [dateError, setDateError] = useState('');
 
+  const getFocusableElements = () => {
+    if (!dialogRef.current) {
+      return [];
+    }
+    return Array.from(
+      dialogRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(el => !el.hasAttribute('disabled'));
+  };
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog || !isModalOpen) {
+      return;
+    }
+
+    const focusableElements = getFocusableElements();
+    if (focusableElements.length === 0) {
+      return;
+    }
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    const handleTabKey = (evt) => {
+      if (evt.key !== 'Tab') {
+        return;
+      }
+
+      if (evt.shiftKey) {
+        if (document.activeElement === firstElement) {
+          evt.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          evt.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    const handleCancel = (evt) => {
+      evt.preventDefault();
+      closeModal();
+    };
+
+    setTimeout(() => {
+      firstElement.focus();
+    }, 100);
+
+    document.addEventListener('keydown', handleTabKey);
+    dialog.addEventListener('cancel', handleCancel);
+
+    return () => {
+      document.removeEventListener('keydown', handleTabKey);
+      dialog.removeEventListener('cancel', handleCancel);
+    };
+  }, [isModalOpen, closeModal]);
+
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -19,10 +78,30 @@ function Modal() {
     if (isModalOpen) {
       dialog.showModal();
       setDateError('');
+
+      const handleClick = (evt) => {
+        const rect = dialog.getBoundingClientRect();
+        const isInDialog = (
+          rect.top <= evt.clientY &&
+          evt.clientY <= rect.top + rect.height &&
+          rect.left <= evt.clientX &&
+          evt.clientX <= rect.left + rect.width
+        );
+
+        if (!isInDialog) {
+          closeModal();
+        }
+      };
+
+      dialog.addEventListener('click', handleClick);
+
+      return () => {
+        dialog.removeEventListener('click', handleClick);
+      };
     } else {
       dialog.close();
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, closeModal]);
 
   const validateDates = () => {
     if (!dateIn || !dateOut) {
@@ -52,60 +131,69 @@ function Modal() {
   };
 
   return (
-    <dialog className="modal" ref={dialogRef} onKeyDown={closeModal}>
-      <div className="modal__button-close-container">
-        <button className="modal__button-close" onClick={closeModal}>
-          <span className="visually-hidden">Кнопка закрытия модального окна.</span>
-        </button>
-      </div>
-      <h2>Поиск гостиницы в седоне</h2>
-      <form action="#" className="modal__form" method="post" onSubmit={handleSubmit}>
-        <div className="modal__inputs">
-          <DateInput
-            className="modal"
-            classMod="date-in"
-            label="Дата Заезда:"
-            placeholder="Укажите Дату"
-            name="Date in"
-            inputId="Date in"
-            dataAttr
-            onDateChange={setDateIn}
-            minDate={getTodayDate()}
-          />
-          <DateInput
-            className="modal"
-            classMod="date-out"
-            label="Дата Выезда:"
-            placeholder="Укажите Дату"
-            name="Date out"
-            inputId="Date out"
-            dataAttr
-            onDateChange={setDateOut}
-            minDate={dateIn || getTodayDate()}
-          />
-          <NumberInput
-            className="modal"
-            classMod="adult"
-            label="Взрослые:"
-            name="adult"
-            maxNumber="50"
-          />
-          <NumberInput
-            className="modal"
-            classMod="kids"
-            label="Дети:"
-            name="kids"
-            maxNumber="50"
-            tooltip
-          />
+    <dialog
+      className="modal"
+      ref={dialogRef}
+    >
+      <div className="modal__content">
+        <div className="modal__button-close-container">
+          <button
+            className="modal__button-close"
+            onClick={closeModal}
+            aria-label="Закрыть модальное окна"
+          >
+            <span className="visually-hidden">Кнопка закрытия модального окна.</span>
+          </button>
         </div>
-        {dateError && (
-          <div className="modal__error">
-            {dateError}
+        <h2>Поиск гостиницы в седоне</h2>
+        <form action="#" className="modal__form" method="post" onSubmit={handleSubmit}>
+          <div className="modal__inputs">
+            <DateInput
+              className="modal"
+              classMod="date-in"
+              label="Дата Заезда:"
+              placeholder="Укажите Дату"
+              name="Date in"
+              inputId="Date in"
+              dataAttr
+              onDateChange={setDateIn}
+              minDate={getTodayDate()}
+            />
+            <DateInput
+              className="modal"
+              classMod="date-out"
+              label="Дата Выезда:"
+              placeholder="Укажите Дату"
+              name="Date out"
+              inputId="Date out"
+              dataAttr
+              onDateChange={setDateOut}
+              minDate={dateIn || getTodayDate()}
+            />
+            <NumberInput
+              className="modal"
+              classMod="adult"
+              label="Взрослые:"
+              name="adult"
+              maxNumber="50"
+            />
+            <NumberInput
+              className="modal"
+              classMod="kids"
+              label="Дети:"
+              name="kids"
+              maxNumber="50"
+              tooltip
+            />
           </div>
-        )}
-        <Button className="modal" classMod="secondary" type="submit" text="Найти" />
-      </form>
+          {dateError && (
+            <div className="modal__error">
+              {dateError}
+            </div>
+          )}
+          <Button className="modal" classMod="secondary" type="submit" text="Найти" />
+        </form>
+      </div>
     </dialog>
   );
 }
