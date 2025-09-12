@@ -1,8 +1,29 @@
 import './date-input.scss';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
+function formatDisplayDate(dateString) {
+  if (!dateString) return '';
+
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return '';
+
+  const day = date.getDate();
+  const month = date.toLocaleString('ru-RU', { month: 'long' });
+  const year = date.getFullYear();
+
+  return `${day} ${month} ${year}`;
+}
+
+function getTodayDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 function DateInput({
-  className="",
+  className = "",
   classMod = "",
   label = "Выберите дату",
   placeholder = "дд.мм.гггг",
@@ -10,10 +31,21 @@ function DateInput({
   name = "",
   inputId = "",
   dataAttr = "",
+  onDateChange = () => { },
+  minDate = ""
 }) {
   const inputRef = useRef(null);
   const [selectedDate, setSelectedDate] = useState(defaultDate || getTodayDate());
   const [displayDate, setDisplayDate] = useState(formatDisplayDate(defaultDate || getTodayDate()));
+
+  useEffect(() => {
+    if (minDate && selectedDate < minDate) {
+      const newDate = minDate;
+      setSelectedDate(newDate);
+      setDisplayDate(formatDisplayDate(newDate));
+      onDateChange(newDate);
+    }
+  }, [minDate, selectedDate, onDateChange]);
 
   const handleCalendarClick = () => {
     if (inputRef.current) {
@@ -26,31 +58,11 @@ function DateInput({
     const dateValue = evt.target.value;
     setSelectedDate(dateValue);
     setDisplayDate(formatDisplayDate(dateValue));
+    onDateChange(dateValue);
   };
 
-  function formatDisplayDate(dateString) {
-    if (!dateString) return '';
-
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) return '';
-
-    const day = date.getDate();
-    const month = date.toLocaleString('ru-RU', { month: 'long' });
-    const year = date.getFullYear();
-
-    return `${day} ${month} ${year}`;
-  }
-
-  function getTodayDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
   return (
-    <div className={`${className? `${className}__date-input` : ""} date-input`}>
+    <div className={`${className ? `${className}__date-input` : ""} date-input`}>
       {label && (
         <label className="date-input__label" htmlFor={inputId}>
           {label}
@@ -64,6 +76,7 @@ function DateInput({
         onChange={handleInputChange}
         id={inputId}
         name={name}
+        min={minDate}
         {...(dataAttr && { 'data-display': displayDate || placeholder })}
       />
       <button

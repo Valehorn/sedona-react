@@ -38,6 +38,10 @@
   right: 62px;
 }
 
+.modal__form {
+  position: relative;
+}
+
 .modal__button-close {
   position: relative;
   width: 53px;
@@ -67,7 +71,8 @@
     background-color: #e6e6e6;
   }
 
-  &:active {
+  &:active,
+  &:focus-visible {
     border-color: vars.$primary-bg-color;
   }
 }
@@ -93,4 +98,13 @@
   &:has(input[id="kids"]) {
     margin-inline-start: 87px;
   }
+}
+
+.modal__error {
+  position: absolute;
+  bottom: 65px;
+  left: 50%;
+  width: 366px;
+  transform: translateX(-50%);
+  color: vars.$form-error;
 }
