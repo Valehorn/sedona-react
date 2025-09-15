@@ -1,0 +1,20 @@
+@use '../../global/variables.scss' as vars;
+
+.standart-input {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 24px;
+  caret-color: vars.$primary-bg-color;
+  min-width: 452px;
+  min-height: 52px;
+  background-color: #f2f2f2;
+  border: 3px solid transparent;
+  border-radius: 4px 0 0 4px;
+  outline: 1px solid transparent;
+  padding: 0 20px;
+  transition: border-color 0.3s ease;
+
+  &:focus-visible {
+    border-color: vars.$primary-bg-color;
+  }
+}

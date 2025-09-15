@@ -1,7 +1,16 @@
 import './button.scss';
 import { Link } from 'react-router-dom';
 
-function Button({ className, classMod='', classExtra='', type = 'button', text, children, isLink = false, path = '#' }) {
+function Button({
+  className,
+  classMod = '',
+  classExtra = '',
+  type = 'button',
+  text,
+  children,
+  isLink = false,
+  path = '#'
+}) {
   if (isLink) {
     return (
       <Link to={`/${path}`} className={`button ${className}__button ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} draggable="false">

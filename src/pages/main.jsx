@@ -16,7 +16,7 @@ function Main() {
           <Reasons />
           <Advantages />
           <Total />
-          <Subscription />
+          <Subscription  main/>
         </main>
       </div>
       <Modal />
