@@ -1,5 +1,9 @@
 @use '../../global/variables.scss' as vars;
 
+.standart-input__container {
+  position: relative;
+}
+
 .standart-input {
   font-family: inherit;
   font-size: 18px;
@@ -17,4 +21,11 @@
   &:focus-visible {
     border-color: vars.$primary-bg-color;
   }
+}
+
+.standart-input__error {
+  position: absolute;
+  top: 60px;
+  display: block;
+  color: vars.$form-error;
 }
