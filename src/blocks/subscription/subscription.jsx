@@ -8,7 +8,8 @@ function Subscription({ main }) {
   const subscriptionData = {
     title: "Подпишись на рассылку",
     description: "Только полезная информация и никакого спама,<br> честное бойскаутское!",
-    error: "Введите корректный email (формат: xxx@xxx.xx)",
+    formatError: "Введите корректный email (формат: xxx@xxx.xx)",
+    requiredError: "Это поле обязательное."
   }
 
   const [email, setEmail] = useState('');
@@ -25,11 +26,17 @@ function Subscription({ main }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const regex = new RegExp(emailPattern);
-    if (!regex.test(email)) {
-      setEmailError(subscriptionData.error);
+    if (!email.trim()) {
+      setEmailError(subscriptionData.requiredError);
       return;
     }
+
+    const regex = new RegExp(emailPattern);
+    if (!regex.test(email)) {
+      setEmailError(subscriptionData.formatError);
+      return;
+    }
+
     if (formRef.current) {
       setEmail('');
       alert('Вы успешно подписались!');
