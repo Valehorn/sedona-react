@@ -1,4 +1,5 @@
 import Advantages from "../blocks/advantages/advantages";
+import Footer from "../blocks/footer/footer";
 import Header from "../blocks/header/header";
 import Hero from "../blocks/hero/hero";
 import Modal from "../blocks/modal/modal";
@@ -18,6 +19,7 @@ function Main() {
           <Total />
           <Subscription  main/>
         </main>
+        <Footer />
       </div>
       <Modal />
     </>
