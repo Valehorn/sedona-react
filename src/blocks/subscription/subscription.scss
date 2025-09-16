@@ -22,6 +22,10 @@
 .subscription__intro {
   margin-block-end: 54px;
   padding-inline: 0;
+
+  p:first-of-type {
+    letter-spacing: 2px;
+  }
 }
 
 .subscription__form {
