@@ -1,4 +1,3 @@
-import Container from "../blocks/container/container";
 import Footer from "../blocks/footer/footer";
 import Header from "../blocks/header/header";
 
