@@ -1,0 +1,51 @@
+@use '../../global/variables.scss' as vars;
+
+.social-link {
+  --mask-image: 0;
+  --mask-size: 0;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 11px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    mask-image: var(--mask-image);
+    mask-size: var(--mask-size);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: vars.$primary-bg-color;
+    width: 24px;
+    height: 17px;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    background-color: #68a2ca;
+  }
+
+  &:active::after {
+    background-color: #2c6083;
+  }
+}
+
+.social-link--vk {
+  --mask-image: url("../../assets/image/icons/vk-logo.svg");
+  --mask-size: 24px 14px;
+}
+
+.social-link--telegram {
+  --mask-image: url("../../assets/image/icons/telegram-logo.svg");
+  --mask-size: 18px 16px;
+}
+
+.social-link--youtube {
+  --mask-image: url("../../assets/image/icons/youtube-logo.svg");
+  --mask-size: 22px 17px;
+}
