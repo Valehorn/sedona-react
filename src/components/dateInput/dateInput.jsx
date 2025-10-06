@@ -2,10 +2,14 @@ import './date-input.scss';
 import { useState, useRef, useEffect } from 'react';
 
 function formatDisplayDate(dateString) {
-  if (!dateString) return '';
+  if (!dateString) {
+    return '';
+  };
 
   const date = new Date(dateString);
-  if (isNaN(date.getTime())) return '';
+  if (isNaN(date.getTime())) {
+    return '';
+  };
 
   const day = date.getDate();
   const month = date.toLocaleString('ru-RU', { month: 'long' });

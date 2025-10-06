@@ -18,7 +18,7 @@ function Modal() {
     }
     return Array.from(
       dialogRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(el => !el.hasAttribute('disabled'));
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter((element) => !element.hasAttribute('disabled'));
   };
 
   useEffect(() => {
@@ -33,20 +33,30 @@ function Modal() {
     }
 
     const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
 
     const handleTabKey = (evt) => {
       if (evt.key !== 'Tab') {
         return;
       }
 
+      const focusableElements = getFocusableElements();
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (!focusableElements.includes(activeElement)) {
+        evt.preventDefault();
+        firstElement.focus();
+        return;
+      }
+
       if (evt.shiftKey) {
-        if (document.activeElement === firstElement) {
+        if (activeElement === firstElement) {
           evt.preventDefault();
           lastElement.focus();
         }
       } else {
-        if (document.activeElement === lastElement) {
+        if (activeElement === lastElement) {
           evt.preventDefault();
           firstElement.focus();
         }

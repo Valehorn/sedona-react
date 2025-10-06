@@ -10,7 +10,10 @@ function ModalProvider({ children }) {
 
   useEffect(() => {
     const pageContainer = document.querySelector('.page-container');
-    if (!pageContainer) return;
+
+    if (!pageContainer) {
+      return;
+    };
 
     if (isModalOpen) {
       pageContainer.setAttribute('inert', '');
