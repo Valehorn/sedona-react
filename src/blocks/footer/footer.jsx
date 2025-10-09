@@ -22,9 +22,9 @@ function Footer() {
     <footer className="footer">
       <div className="footer__container">
         <ul className="footer__social-list">
-          {footerSocial.map((socialData, index) => {
+          {footerSocial.map((socialData) => {
             return (
-              <li className="footer__social-item" key={index}>
+              <li className="footer__social-item" key={socialData.social}>
                 <SocialLink
                   social={socialData.social}
                   href={socialData.href}

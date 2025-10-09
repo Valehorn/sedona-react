@@ -54,10 +54,10 @@ function Reasons() {
           description={reasonIntro.description}
         />
         <ul className="reasons__list">
-          {reasonsData.map((item, index) => {
+          {reasonsData.map((item) => {
             return (
               <ReasonsItem
-                key={index}
+                key={item.title}
                 classMod1={item.mod}
                 classMod2={item.mod2}
                 title={item.title}

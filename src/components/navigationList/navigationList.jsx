@@ -11,11 +11,11 @@ function NavigationList({className = ''}) {
   return (
     <nav className={`${className}__navigation`}>
       <ul className={`${className}__navigation-list`}>
-        {navigationData.map((item, index) => {
+        {navigationData.map((item) => {
           const isActive = location.pathname === item.path;
           return (
             <li
-              key={index}
+              key={item.title}
               className={`${className}__navigation-item`}
               aria-current={isActive ? "page" : undefined}
             >

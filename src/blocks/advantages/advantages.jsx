@@ -36,10 +36,10 @@ function Advantages() {
         title={advantagesIntro.title}
         description={advantagesIntro.description} />
       <ul className="advantages__list">
-        {advantagesData.map((item, index) => {
+        {advantagesData.map((item) => {
           return (
             <AdvantagesItem
-              key={index}
+              key={item.mod2 || item.mod}
               classMod1={item.mod}
               classMod2={item.mod2}
               title={item.title}
