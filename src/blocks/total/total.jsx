@@ -18,7 +18,7 @@ function Total() {
         classMod="primary"
         classExtra="search-button"
         text="Поиск гостиницы в Седоне"
-        isLink
+        isInnerLink
         path="catalog">
       </Button>
     </section>
