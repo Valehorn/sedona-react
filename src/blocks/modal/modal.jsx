@@ -156,7 +156,7 @@ function Modal() {
           </button>
         </div>
         <h2>Поиск гостиницы в седоне</h2>
-        <form action="#" className="modal__form" method="post" onSubmit={handleSubmit}>
+        <form className="modal__form" action="#" method="post" onSubmit={handleSubmit}>
           <div className="modal__inputs">
             <DateInput
               className="modal"
