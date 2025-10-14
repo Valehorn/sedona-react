@@ -1,3 +1,22 @@
-.filter-form {
-  position: relative;
+@use '../../global/variables.scss' as vars;
+
+.filter {
+  background-image: url(../../assets/image/catalog/filter.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: vars.$primary-bg-color;
+  padding-block-start: 32px;
+
+  .container {
+    flex-direction: column;
+    background-color: transparent;
+  }
+}
+
+.filter__title {
+  font-size: 60px;
+  line-height: 78px;
+  color: #ffffff;
+  margin: 0;
+  margin-block-end: 3px;
 }

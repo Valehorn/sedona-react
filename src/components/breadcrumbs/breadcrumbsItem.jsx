@@ -8,7 +8,8 @@ function BreadcrumbsItem({ link, url, isFirst }) {
         className={`breadcrumbs__link ${isFirst ? 'breadcrumbs__link--home' : ''}`}
         to={url}
       >
-        {link}
+        {!isFirst && link}
+        {isFirst && <span className='visually-hidden'>{link}</span>}
       </Link>
     </li>
   );
