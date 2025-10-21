@@ -1,10 +1,12 @@
+import './filter.scss';
 import { useState } from 'react';
 import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
 import CheckboxInput from '../../components/checkboxInput/checkboxInput';
 import RadioInput from '../../components/radioInput/radioInput';
 import Container from '../container/container';
-import './filter.scss';
 import PriceInput from '../../components/priceInput/priceInput';
+import InputRange from '../../components/inputRange/inputRange';
+import Button from '../../components/Button/Button';
 
 function Filter() {
   const breadcrumbs = [
@@ -84,6 +86,16 @@ function Filter() {
     });
   };
 
+  const handleRangeChange = (newRange) => {
+    setFilters(prev => ({
+      ...prev,
+      price: {
+        min: String(newRange[0]),
+        max: String(newRange[1])
+      }
+    }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Отправленные фильтры:', filters);
@@ -130,13 +142,33 @@ function Filter() {
                       )}
                     </li>
                   ))}
+                  {item.type === 'number' && (
+                    <li>
+                      <InputRange
+                        className="filter__price-slider"
+                        min={0}
+                        max={10000}
+                        value={[Number(filters.price.min), Number(filters.price.max)]}
+                        onChange={handleRangeChange}
+                      />
+                    </li>
+                  )}
                 </ul>
               </fieldset>
             );
           })}
-          <button type="submit" className="filter__submit">
-            Применить фильтры
-          </button>
+          <div className="filter__button-container">
+            <Button
+              className="filter"
+              classMod="secondary"
+              type="submit"
+              text="Применить" />
+            <Button
+              className="filter"
+              classMod="transparent"
+              type="reset"
+              text="Сбросить" />
+          </div>
         </form>
       </Container>
     </section>

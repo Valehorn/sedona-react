@@ -45,3 +45,12 @@
     background-color: #68a2ca;
   }
 }
+
+.button--transparent {
+  background-color: transparent;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
