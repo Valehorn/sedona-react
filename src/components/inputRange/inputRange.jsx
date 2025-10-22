@@ -17,9 +17,9 @@ function InputRange({
     <Slider
       className={className}
       classNames={{
-        rail: `${className}-rail`,
-        track: `${className}-track`,
-        handle: `${className}-handle`
+        rail: `${className}__rail`,
+        track: `${className}__track`,
+        handle: `${className}__handle`
       }}
       range
       min={min}

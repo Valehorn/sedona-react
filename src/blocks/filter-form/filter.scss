@@ -6,6 +6,7 @@
   background-size: cover;
   background-color: vars.$primary-bg-color;
   padding-block-start: 32px;
+  padding-block-end: 70px;
 
   .container {
     flex-direction: column;
@@ -19,4 +20,67 @@
   color: #ffffff;
   margin: 0;
   margin-block-end: 3px;
+}
+
+.filter__breadcrumbs {
+  margin: 0;
+  margin-block-end: 18px;
+}
+
+.filter__form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter__fields {
+  border: 1px solid transparent;
+  margin-inline-end: 69px;
+  padding: 0;
+
+  legend {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #ffffff;
+    margin-block-end: 32px;
+  }
+
+
+  &:nth-of-type(2n) {
+    margin-inline-end: auto;
+  }
+
+  &:nth-of-type(3n) {
+    margin-inline-end: 70px;
+  }
+}
+
+.filter__input-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter__input-list--price {
+  display: grid;
+  grid-template-columns: repeat(2, 143px);
+  gap: 44px 2px;
+}
+
+li:has(.filter__price-slider) {
+  grid-column: 1 / -1;
+}
+
+.filter__button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-block-start: 54px;
+}
+
+.filter__button {
+  width: 191px;
 }

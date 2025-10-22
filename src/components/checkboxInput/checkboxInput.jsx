@@ -1,6 +1,19 @@
 import './checkbox-input.scss';
 
 function CheckboxInput({ item, input, section, checked = false, onChange = () => {} }) {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === 'Space') {
+      event.preventDefault();
+      onChange({
+        target: {
+          type: 'checkbox',
+          value: input,
+          checked: !checked
+        }
+      });
+    }
+  };
+
   return (
     <label>
       <input
@@ -10,6 +23,7 @@ function CheckboxInput({ item, input, section, checked = false, onChange = () =>
         value={input}
         checked={checked}
         onChange={onChange}
+        onKeyDown={handleKeyDown}
       />
       <span>{input}</span>
     </label>

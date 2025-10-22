@@ -1,0 +1,73 @@
+label:has([type="checkbox"]),
+label:has([type="radio"]) {
+  display: flex;
+  align-items: center;
+  gap: 0 14px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  input {
+    position: relative;
+    appearance: none;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  input::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  span {
+    font-size: 18px;
+    line-height: 23px;
+    color: #ffffff;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  input:checked::before {
+    opacity: 1;
+  }
+}
+
+label:has([type="checkbox"]) {
+  input {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+
+  input::before {
+    background-image: url(../../assets/image/icons/check-mark.svg);
+    background-position:  center;
+    background-size: 12px 10px;
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 10px;
+  }
+}
+
+label:has([type="radio"]) {
+  input {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  input::before {
+    background-color: #3f5e72;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+}

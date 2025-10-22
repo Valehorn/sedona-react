@@ -1,3 +1,27 @@
-.filter__price-slider-track {
-  background-color: red;
+.input-range {
+  width: 278px;
+  transform: translateX(10px);
+}
+
+.input-range__track {
+  height: 4px;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.input-range__rail {
+  height: 4px;
+  background-color: #808080;
+  border-radius: 4px;
+}
+
+.input-range__handle {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  opacity: 1;
+  background-color: #ffffff;
+  cursor: grab;
+  border: 1px solid transparent;
+  margin-block-start: -8px;
 }

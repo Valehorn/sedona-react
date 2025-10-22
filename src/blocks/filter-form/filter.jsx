@@ -1,4 +1,3 @@
-import './filter.scss';
 import { useState } from 'react';
 import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
 import CheckboxInput from '../../components/checkboxInput/checkboxInput';
@@ -7,6 +6,7 @@ import Container from '../container/container';
 import PriceInput from '../../components/priceInput/priceInput';
 import InputRange from '../../components/inputRange/inputRange';
 import Button from '../../components/Button/Button';
+import './filter.scss';
 
 function Filter() {
   const breadcrumbs = [
@@ -101,17 +101,32 @@ function Filter() {
     console.log('Отправленные фильтры:', filters);
   };
 
+  const handleReset = () => {
+    setFilters({
+      amenities: {
+        'Бассейн': true,
+        'Парковка': true,
+        'Wi-Fi': false,
+      },
+      accommodationType: 'Гостиница',
+      price: {
+        min: '0',
+        max: '9000'
+      }
+    });
+  };
+
   return (
     <section className="filter">
       <Container>
         <h1 className="filter__title">Гостиницы Седоны</h1>
         <Breadcrumbs items={breadcrumbs} section="filter" />
-        <form className="filter__form" onSubmit={handleSubmit}>
+        <form className="filter__form" onSubmit={handleSubmit} onReset={handleReset} action="/">
           {fields.map((item) => {
             return (
               <fieldset key={item.title} className="filter__fields">
                 <legend>{item.title}</legend>
-                <ul className="filter__input-list">
+                <ul className={`filter__input-list ${item.type === 'number' ? 'filter__input-list--price' : ''}`}>
                   {item.inputs.map((input, inputIndex) => (
                     <li key={inputIndex}>
                       {item.type === 'checkbox' && (
@@ -145,7 +160,7 @@ function Filter() {
                   {item.type === 'number' && (
                     <li>
                       <InputRange
-                        className="filter__price-slider"
+                        className="input-range"
                         min={0}
                         max={10000}
                         value={[Number(filters.price.min), Number(filters.price.max)]}

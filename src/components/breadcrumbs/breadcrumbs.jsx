@@ -1,4 +1,5 @@
 import './breadcrumbs.scss';
+import '../../blocks/filter-form/filter.scss';
 import BreadcrumbsItem from './breadcrumbsItem';
 
 function Breadcrumbs({ items, section }) {
