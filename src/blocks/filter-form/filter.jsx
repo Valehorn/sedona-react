@@ -38,18 +38,20 @@ function Filter() {
     },
   ];
 
-  const [filters, setFilters] = useState({
-    amenities: {
-      'Бассейн': true,
-      'Парковка': true,
-      'Wi-Fi': false,
-    },
-    accommodationType: 'Гостиница',
-    price: {
-      min: '0',
-      max: '9000'
-    }
-  });
+  const getInitialFilters = () => ({
+  amenities: {
+    'Бассейн': true,
+    'Парковка': true,
+    'Wi-Fi': false,
+  },
+  accommodationType: 'Гостиница',
+  price: {
+    min: '0',
+    max: '9000'
+  }
+});
+
+  const [filters, setFilters] = useState(getInitialFilters);
 
   const handleFilterChange = (evt, fieldType, fieldName = null) => {
     const { value, type, checked } = evt.target;
@@ -102,18 +104,7 @@ function Filter() {
   };
 
   const handleReset = () => {
-    setFilters({
-      amenities: {
-        'Бассейн': true,
-        'Парковка': true,
-        'Wi-Fi': false,
-      },
-      accommodationType: 'Гостиница',
-      price: {
-        min: '0',
-        max: '9000'
-      }
-    });
+    setFilters(getInitialFilters);
   };
 
   return (
