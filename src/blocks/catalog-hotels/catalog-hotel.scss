@@ -1,0 +1,16 @@
+.catalog-hotels {
+  position: relative;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.catalog-hotels__list {
+  width: 100%;
+
+  .swiper {
+    width: 100%;
+  }
+}
