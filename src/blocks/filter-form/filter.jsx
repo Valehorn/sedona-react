@@ -5,7 +5,7 @@ import RadioInput from '../../components/radioInput/radioInput';
 import Container from '../container/container';
 import PriceInput from '../../components/priceInput/priceInput';
 import InputRange from '../../components/inputRange/inputRange';
-import Button from '../../components/Button/Button';
+import Button from '../../components/button/button';
 import './filter.scss';
 
 function Filter() {

@@ -10,25 +10,27 @@ function Button({
   children,
   isLink = false,
   isInnerLink = false,
-  path = '#'
+  path = '#',
+  onClick= () => {},
 }) {
+
   if (isInnerLink) {
     return (
-      <Link to={`/${path}`} className={`button ${className}__button ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} draggable="false">
+      <Link to={`/${path}`} className={`button ${className}-link ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} draggable="false">
         <span>{text}</span>
         {children}
       </Link>
     );
   } else if (isLink) {
     return (
-      <a href={`/${path}`} className={`button ${className}__button ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} draggable="false">
+      <a href={`/${path}`} className={`button ${className}-link ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} draggable="false">
         <span>{text}</span>
         {children}
       </a>
     );
   } else {
     return (
-      <button className={`button ${className}__button ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} type={type}>
+      <button className={`button ${className}__button ${classExtra ? `${className}__${classExtra}` : ""} button--${classMod}`} type={type} onClick={onClick}>
         <span>{text}</span>
         {children}
       </button>

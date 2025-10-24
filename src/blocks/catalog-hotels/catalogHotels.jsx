@@ -3,6 +3,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useState } from 'react';
 import Container from '../container/container';
 import Select from '../../components/select/select';
 import ViewButton from '../../components/viewButton/viewButton';
@@ -15,11 +16,13 @@ import hotel3 from '../../assets/image/catalog/hotel-3.jpg';
 import hotel4 from '../../assets/image/catalog/hotel-4.jpg';
 
 function CatalogHotels() {
+  const [currentView, setCurrentView] = useState(0);
   const selectData = ['Сначала дешевые', 'Сначала дорогие'];
   const vieButtons = ['grid', 'slider', 'list'];
   const hotelData = [
     {
       name: 'Amara Resort & Spa',
+      type: 'Гостиница',
       price: '4000',
       stars: 4,
       rating: '8,5',
@@ -27,6 +30,7 @@ function CatalogHotels() {
     },
     {
       name: 'Villas at Poco Diablo',
+      type: 'Гостиница',
       price: '5000',
       stars: 4,
       rating: '9,2',
@@ -34,6 +38,7 @@ function CatalogHotels() {
     },
     {
       name: 'Desert Quail Inn',
+      type: 'Гостиница',
       price: '2500',
       stars: 3,
       rating: '6,9',
@@ -41,32 +46,45 @@ function CatalogHotels() {
     },
     {
       name: 'GreenTree Inn',
+      type: 'Гостиница',
       price: '1500',
       stars: 2,
       rating: '5,0',
       image: hotel4
     },
   ];
+  let currentViewType = vieButtons[currentView];
+
+  const handleViewChange = (index) => {
+    setCurrentView(index);
+    currentViewType = vieButtons[currentView];
+  };
 
   return (
     <section className="catalog-hotels">
       <Container>
         <div className="catalog-hotels__sorting">
-          <h2 className="catalog-hotels__title">Найдено гостиниц: 38</h2>
+          <h2 className="catalog-hotels__title">Найдено гостиниц: {hotelData.length}</h2>
           <Select name="catalog-hotels__sorting" id="catalog-hotels__sorting" block="catalog-hotels" data={selectData} />
           <ul className="catalog-hotels__view-list">
-            {vieButtons.map((button) => {
+            {vieButtons.map((button, index) => {
               return (
                 <li key={button}>
-                  <ViewButton info={button} />;
+                  <ViewButton info={button} current={currentView === index ? button : null} onClick={() => handleViewChange(index)} />
                 </li>
               );
             })}
           </ul>
         </div>
 
-        <div className="catalog-hotels__list">
-          <Swiper
+        <div className={`catalog-hotels__list  ${currentViewType ? `catalog-hotels__list--${currentViewType}` : ''}`}>
+          {(currentViewType === 'grid' || currentViewType === 'list') && (
+            hotelData.map((card, index) => (
+              <Card key={index} data={card} block="catalog-hotels" />
+            ))
+          )}
+
+          {currentViewType === 'slider' && (<Swiper
             modules={[Navigation]}
             spaceBetween={20}
             slidesPerView={2}
@@ -74,10 +92,10 @@ function CatalogHotels() {
           >
             {hotelData.map((card, index) => (
               <SwiperSlide key={index}>
-                <Card data={card} />
+                <Card data={card} block="catalog-hotels" />
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper>)}
         </div>
       </Container>
     </section>
