@@ -87,7 +87,7 @@ function CatalogHotels() {
           {currentViewType === 'slider' && (<Swiper
             modules={[Navigation]}
             spaceBetween={20}
-            slidesPerView={2}
+            slidesPerView={3}
             navigation
           >
             {hotelData.map((card, index) => (
