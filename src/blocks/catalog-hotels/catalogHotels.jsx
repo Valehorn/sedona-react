@@ -1,4 +1,4 @@
-import './catalog-hotel.scss';
+import './catalog-hotels.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -85,6 +85,7 @@ function CatalogHotels() {
             name="catalog-hotels__sorting"
             id="catalog-hotels__sorting"
             block="catalog-hotels"
+            description="Сортировка отелей по цене."
             data={selectData}
             value={sortOrder}
             onChange={handleSortChange} />
