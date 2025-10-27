@@ -107,18 +107,31 @@ function CatalogHotels() {
             ))
           )}
 
-          {currentViewType === 'slider' && (<Swiper
-            modules={[Navigation]}
-            spaceBetween={20}
-            slidesPerView={3}
-            navigation
-          >
-            {sortedHotels.map((card) => (
-              <SwiperSlide key={card.name}>
-                <Card data={card} block="catalog-hotels" />
-              </SwiperSlide>
-            ))}
-          </Swiper>)}
+          {currentViewType === 'slider' && (
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={20}
+              slidesPerView={3}
+              navigation={{
+                nextEl: '.catalog-hotels__slider-button--next',
+                prevEl: '.catalog-hotels__slider-button--prev',
+              }}
+            >
+              {sortedHotels.map((card) => (
+                <SwiperSlide key={card.name}>
+                  <Card data={card} block="catalog-hotels" />
+                </SwiperSlide>
+              ))}
+              <div className="catalog-hotels__slider-navigation">
+                <button className="catalog-hotels__slider-button catalog-hotels__slider-button--prev">
+                  ←
+                </button>
+                <button className="catalog-hotels__slider-button catalog-hotels__slider-button--next">
+                  →
+                </button>
+              </div>
+            </Swiper>
+          )}
         </div>
       </Container>
     </section>

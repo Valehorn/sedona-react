@@ -31,8 +31,14 @@ label:has(.select) {
   min-width: 292px;
   min-height: 49px;
   padding: 14px 32px 14px 20px;
+  outline: 1px solid transparent;
   border: 2px solid #e5e5e5;
   border-radius: 4px;
   appearance: none;
   cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:focus-visible {
+    border-color: #83b3d3;
+  }
 }

@@ -1,0 +1,42 @@
+.view-button {
+  --icon: 0;
+
+  position: relative;
+  display: block;
+  background-color: #ffffff;
+  width: 48px;
+  height: 48px;
+  outline: 1px solid transparent;
+  border: 3px solid #e5e5e5;
+  border-radius: 4px;
+  cursor: pointer;
+  background-image: var(--icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border-color 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: #0e48c4;
+  }
+
+  &:active {
+    border-color: #e5e5e5;
+  }
+}
+
+.view-button--current {
+  border-color: #000000;
+}
+
+.view-button--grid {
+  --icon: url("../../assets/image/icons/view-grid.svg");
+}
+
+.view-button--list {
+  --icon: url("../../assets/image/icons/view-list.svg");
+}
+
+.view-button--slider {
+  --icon: url("../../assets/image/icons/view-slider.svg");
+}
