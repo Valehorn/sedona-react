@@ -18,6 +18,7 @@ import hotel4 from '../../assets/image/catalog/hotel-4.jpg';
 function CatalogHotels() {
   const [currentView, setCurrentView] = useState(0);
   const selectData = ['Сначала дешевые', 'Сначала дорогие'];
+  const [sortOrder, setSortOrder] = useState('Сначала дешевые');
   const vieButtons = ['grid', 'slider', 'list'];
   const hotelData = [
     {
@@ -53,19 +54,40 @@ function CatalogHotels() {
       image: hotel4
     },
   ];
-  let currentViewType = vieButtons[currentView];
+
+  const currentViewType = vieButtons[currentView];
+
+  const sortedHotels = hotelData.toSorted((a, b) => {
+    const priceA = parseInt(a.price);
+    const priceB = parseInt(b.price);
+
+    if (sortOrder === 'Сначала дешевые') {
+      return priceA - priceB;
+    } else {
+      return priceB - priceA;
+    }
+  });
 
   const handleViewChange = (index) => {
     setCurrentView(index);
-    currentViewType = vieButtons[currentView];
+  };
+
+  const handleSortChange = (evt) => {
+    setSortOrder(evt.target.value);
   };
 
   return (
     <section className="catalog-hotels">
       <Container>
         <div className="catalog-hotels__sorting">
-          <h2 className="catalog-hotels__title">Найдено гостиниц: {hotelData.length}</h2>
-          <Select name="catalog-hotels__sorting" id="catalog-hotels__sorting" block="catalog-hotels" data={selectData} />
+          <h2 className="catalog-hotels__title">Найдено гостиниц: {sortedHotels.length}</h2>
+          <Select
+            name="catalog-hotels__sorting"
+            id="catalog-hotels__sorting"
+            block="catalog-hotels"
+            data={selectData}
+            value={sortOrder}
+            onChange={handleSortChange} />
           <ul className="catalog-hotels__view-list">
             {vieButtons.map((button, index) => {
               return (
@@ -79,7 +101,7 @@ function CatalogHotels() {
 
         <div className={`catalog-hotels__list  ${currentViewType ? `catalog-hotels__list--${currentViewType}` : ''}`}>
           {(currentViewType === 'grid' || currentViewType === 'list') && (
-            hotelData.map((card, index) => (
+            sortedHotels.map((card, index) => (
               <Card key={index} data={card} block="catalog-hotels" />
             ))
           )}
@@ -90,8 +112,8 @@ function CatalogHotels() {
             slidesPerView={3}
             navigation
           >
-            {hotelData.map((card, index) => (
-              <SwiperSlide key={index}>
+            {sortedHotels.map((card) => (
+              <SwiperSlide key={card.name}>
                 <Card data={card} block="catalog-hotels" />
               </SwiperSlide>
             ))}
