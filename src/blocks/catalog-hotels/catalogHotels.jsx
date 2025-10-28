@@ -14,6 +14,9 @@ import hotel1 from '../../assets/image/catalog/hotel-1.jpg';
 import hotel2 from '../../assets/image/catalog/hotel-2.jpg';
 import hotel3 from '../../assets/image/catalog/hotel-3.jpg';
 import hotel4 from '../../assets/image/catalog/hotel-4.jpg';
+import { generatePaginationData } from '../../functions/functions';
+import StandartPagination from '../../components/standartPagination/StandartPagination';
+
 
 function CatalogHotels() {
   const [currentView, setCurrentView] = useState(0);
@@ -54,6 +57,8 @@ function CatalogHotels() {
       image: hotel4
     },
   ];
+
+  const paginationData = generatePaginationData(1, 10);
 
   const currentViewType = vieButtons[currentView];
 
@@ -102,9 +107,11 @@ function CatalogHotels() {
 
         <div className={`catalog-hotels__list  ${currentViewType ? `catalog-hotels__list--${currentViewType}` : ''}`}>
           {(currentViewType === 'grid' || currentViewType === 'list') && (
-            sortedHotels.map((card, index) => (
-              <Card key={index} data={card} block="catalog-hotels" />
-            ))
+            <>
+              {sortedHotels.map((card, index) => (
+                <Card key={index} data={card} block="catalog-hotels" />
+              ))}
+            </>
           )}
 
           {currentViewType === 'slider' && (
@@ -133,6 +140,9 @@ function CatalogHotels() {
             </Swiper>
           )}
         </div>
+        {(currentViewType !== 'slider') && (
+          <StandartPagination data={paginationData} />
+        )}
       </Container>
     </section>
   );
