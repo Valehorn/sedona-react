@@ -3,6 +3,7 @@ import Header from "../blocks/header/header";
 import Filter from "../blocks/filter-form/filter";
 import Modal from "../blocks/modal/modal";
 import CatalogHotels from "../blocks/catalog-hotels/catalogHotels";
+import Subscription from "../blocks/subscription/subscription";
 
 function Catalog() {
   return (
@@ -11,6 +12,7 @@ function Catalog() {
         <Header />
         <Filter />
         <CatalogHotels />
+        <Subscription />
         <Footer />
       </div>
       <Modal />
